@@ -54,6 +54,8 @@ pipeline {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                     cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
+                    id
+                    su jenkins
                     git status
                     git config user.email "yashbhoir123@gmail.com"
                     git config user.name "yashbhoir"
