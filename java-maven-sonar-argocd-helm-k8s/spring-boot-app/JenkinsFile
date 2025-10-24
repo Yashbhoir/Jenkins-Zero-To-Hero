@@ -54,6 +54,9 @@ pipeline {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                     cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
+                    groupadd -g ${JENKINS_GID} jenkins || true && \
+                    useradd -m -u ${JENKINS_UID} -g ${JENKINS_GID} -s /bin/bash jenkins || true
+                    su jenkins
                     id
                     cat /etc/passwd
                     git status
