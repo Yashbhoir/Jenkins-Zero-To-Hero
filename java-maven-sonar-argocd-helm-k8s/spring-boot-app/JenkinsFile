@@ -49,6 +49,9 @@ pipeline {
         environment {
             GIT_REPO_NAME = "jenkins-kube-push"
             GIT_USER_NAME = "yashbhoir"
+            JENKINS_GID = 981
+            JENKINS_UID = 981
+            
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
