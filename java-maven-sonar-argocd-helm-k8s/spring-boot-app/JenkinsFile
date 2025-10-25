@@ -66,6 +66,9 @@ pipeline {
                     git config --global --add safe.directory /var/lib/jenkins/workspace/ci_cd_deployment
                     git add spring-boot-app-manifests/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git remote -v
+                    git config user.name
+                    git config user.email
                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                  
 
