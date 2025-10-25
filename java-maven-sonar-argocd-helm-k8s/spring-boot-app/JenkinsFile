@@ -69,7 +69,7 @@ pipeline {
                     git remote -v
                     git config user.name
                     git config user.email
-                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                    git push https://${GITHUB_TOKEN}@github.com/yashbhoir/jenkins-kube-push.git HEAD:main
                  
 
                 '''
