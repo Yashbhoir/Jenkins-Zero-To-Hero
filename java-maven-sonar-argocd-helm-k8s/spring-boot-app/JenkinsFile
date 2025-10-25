@@ -66,7 +66,7 @@ pipeline {
                     git config --global --add safe.directory /var/lib/jenkins/workspace/ci_cd_deployment
                     git add spring-boot-app-manifests/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git remote set-url origin https://github.com/Yashbhoir/jenkins-kube-push.git
+                    git remote add upstream https://github.com/OtherUser/jenkins-kube-push.git
                     git remote -v
                     git config user.name
                     git config user.email
