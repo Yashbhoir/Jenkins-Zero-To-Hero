@@ -66,7 +66,12 @@ pipeline {
                     git config --global --add safe.directory /var/lib/jenkins/workspace/ci_cd_deployment
                     git add spring-boot-app-manifests/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                    
+                    withCredentials([string(credentialsId: 'github', variable: 'GIT_TOKEN')]) {
+  sh '''
+    git push https://x-access-token:$GIT_TOKEN@github.com/yashbhoir/jenkins-kube-push.git HEAD:main
+  '''
+}
                 '''
             }
         }
