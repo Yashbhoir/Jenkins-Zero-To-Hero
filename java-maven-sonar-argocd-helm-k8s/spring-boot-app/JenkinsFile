@@ -59,12 +59,8 @@ pipeline {
                     cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
                     groupadd -g ${JENKINS_GID} jenkins || true && \
                     useradd -m -u ${JENKINS_UID} -g ${JENKINS_GID} -s /bin/bash jenkins || true
-                    su jenkins
-                    id
+                    su -s /bin/bash jenkins -c "id && pwd && git config user.email 'yashbhoir123@gmail.com' && git config user.name 'yashbhoir' && git status"
                     cat /etc/passwd
-                    git status
-                    git config user.email "yashbhoir123@gmail.com"
-                    git config user.name "yashbhoir"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" deployment.yml
                     git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
